@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="MyFamily.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:MyFamily"
+    Shell.FlyoutBehavior="Disabled"
+    Shell.BackgroundColor="Azure"
+    Title="MyFamily">
+
+    <ShellContent
+        Title="Home"
+        ContentTemplate="{DataTemplate local:MainPage}"
+        Route="MainPage"/>
+    
+    <ShellContent
+        Title="Settings"
+        ContentTemplate="{DataTemplate local:SettingPage}"
+        Route="SettingPage" />
+
+</Shell>

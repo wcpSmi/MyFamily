@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyFamily.SettingPage"
+             Title="SettingPage">
+
+
+    <StackLayout Padding="20" Spacing="6">
+        <Label Text="Enter your username:" FontSize="Small" />
+        <Entry x:Name="UserNameEntry" Placeholder="Username" FontSize="24" />
+        <BoxView HeightRequest="10" BackgroundColor="Transparent" />
+        <Label Text="Redis Server ConnectionString:" FontSize="Small" />
+        <Editor x:Name="ConnectionStringEntry" AutoSize="TextChanges" Placeholder="ConnectionString" FontSize="18" />
+        <BoxView HeightRequest="60" BackgroundColor="Transparent" />
+        <Button Text="Save" Clicked="OnSaveClicked" />
+        <!-- Helykihagyás BoxView-val -->
+        <BoxView HeightRequest="60" BackgroundColor="Transparent" />
+        <!-- Settings gombok -->
+        <Button Text="Aplication Settings" Clicked="OpenApplicationDetailsSettings" />
+        <BoxView HeightRequest="20" BackgroundColor="Transparent" />
+        <Button Text="OpenDevice Settings" Clicked="OpenDeviceSpecificSettings" />
+        <BoxView HeightRequest="20" BackgroundColor="Transparent" />
+        <Button Text="Battery Settings" Clicked="OpenIgnoreBatteryOptimizationSettings" />
+    </StackLayout>
+</ContentPage>

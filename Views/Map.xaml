@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:maps="clr-namespace:Microsoft.Maui.Controls.Maps;assembly=Microsoft.Maui.Controls.Maps"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ctrl="clr-namespace:MyFamily"
+             x:Class="MyFamily.Map">
+    
+    <Grid RowDefinitions="Auto,*,Auto">
+        <!-- Címke -->
+        <Label x:Name="label1"
+               Text="Üdvözöljük a térképes alkalmazásban!"
+               HorizontalOptions="Center"
+               VerticalOptions="Start"
+               FontSize="18"
+               Padding="10"
+               Grid.Row="0"/>
+
+        <!-- Szövegbeviteli mező és gomb, egy sorban -->
+        <Grid Grid.Row="3" ColumnDefinitions="*,*,*">
+            <!-- Bal oldali gomb -->
+            <Button x:Name="GoogleUtvonal"
+            Text="Útvonal"
+            Clicked="OnGoogleUtvonalClicked"
+            HorizontalOptions="Fill"
+            VerticalOptions="Center"
+            Grid.Column="0" />
+
+            <!-- Jobb oldali gomb -->
+            <Button x:Name="Exit"
+            Text="Vissza"
+            Clicked="OnExitClicked"
+            HorizontalOptions="Fill"
+            VerticalOptions="Center"
+            Grid.Column="2" />
+        </Grid>
+
+        <!-- Térkép, ami kitölti a maradék helyet -->
+        <maps:Map x:Name="myMap"
+                  IsShowingUser="True"
+                  MapType="Street"
+                  VerticalOptions="FillAndExpand"
+                  HorizontalOptions="FillAndExpand"
+                  Grid.Row="1"/>
+    </Grid>
+</ContentPage>

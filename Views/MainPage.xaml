@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyFamily.MainPage">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem    
+            IconImageSource="menu.png"
+            Order="Primary"
+            Priority="1"           
+            Clicked="OnMenuClicked"/>
+    </ContentPage.ToolbarItems>
+
+
+    <Grid Padding="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <!-- Fő tartalom -->
+            <RowDefinition Height="Auto" />
+            <!-- Beviteli mező és gomb -->
+        </Grid.RowDefinitions>
+
+        <!-- A CollectionView, amely önállóan görgethető -->
+        <CollectionView x:Name="MessagesCollectionView" 
+                ItemsSource="{Binding CollectionItems}" 
+                ItemsUpdatingScrollMode="KeepLastItemInView">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <SwipeView SwipeStarted="OnSwipeStarted">
+                        <SwipeView.RightItems >
+                            <SwipeItems Mode="Reveal">
+                                <SwipeItem Text="Riaszt" 
+                                   BackgroundColor="Red" 
+                                   Invoked="SwipeItem_Alarm"/>
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+
+                        <Frame Padding="15" Margin="5" BackgroundColor="{Binding BackColor}" >
+                            <StackLayout>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label Text="{Binding SenderName}" 
+                                   FontAttributes="Bold"
+                                   TextColor="Black"
+                                   Grid.Column="0" 
+                                   HorizontalOptions="Start" />
+
+                                    <Label Text="{Binding Date}" 
+                                   FontSize="Micro"
+                                   TextColor="Black"
+                                   Grid.Column="1" 
+                                   HorizontalOptions="End" />
+                                </Grid>
+
+                                <Label Text="{Binding Text}"  
+                                       TextColor="Black">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="OnLabelTapped" />
+                                    </Label.GestureRecognizers>
+                                </Label>
+                            </StackLayout>
+                        </Frame>
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+
+
+        </CollectionView>
+        <!-- Szövegbeviteli mező és gomb, egy sorban -->
+        <Grid Grid.Row="1" ColumnDefinitions="*">
+            <Button x:Name="btnWhere"
+                    Text="Frissités" Clicked="OnWhereAreYouClicked"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="Start"
+                    Grid.Column="0"/>
+        </Grid>
+    </Grid>
+</ContentPage>
+
+

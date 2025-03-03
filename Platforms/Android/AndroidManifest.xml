@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.wcp.myfamily">
+	<!-- Engedélyek -->
+	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	<uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+	<uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+	<uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+	<uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+	<uses-permission android:name="android.permission.GET_TASKS" />
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC" />
+	<uses-permission android:name="android.permission.FOREGROUND_SERVICE_LOCATION" />
+	<uses-permission android:name="android.permission.FOREGROUND_SERVICE_REMOTE_MESSAGING" />
+	<uses-permission android:name="android.permission.FOREGROUND_SERVICE_LOCATION=" />
+	<uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
+	<uses-permission android:name="android.permission.VIBRATE" />
+	<application android:allowBackup="true"
+				 android:supportsRtl="true"
+				 android:label="TrackMate"
+				 android:icon="@mipmap/family_appicon"
+				 android:theme="@style/Maui.SplashTheme">
+		<!-- Helyszolgáltatás háttérszolgáltatás -->
+		<service android:name=".LocationService"
+				 android:enabled="true"
+				 android:exported="true"
+				 android:foregroundServiceType="location" />
+		<!-- BackgroundService -->
+		<service android:name=".BackgroundService"
+				 android:enabled="true"
+				 android:exported="true"
+				 android:foregroundServiceType="dataSync|remoteMessaging" />
+		<!-- Rendszerindítás figyelése: BootReceiver -->
+		<receiver android:name=".BootReceiver" android:enabled="true" android:exported="true">
+			<intent-filter>
+				<action android:name="android.intent.action.BOOT_COMPLETED" />
+				<category android:name="android.intent.category.DEFAULT" />
+			</intent-filter>
+		</receiver>
+		<!-- Google Maps API-kulcs hozzáadása -->
+		<meta-data android:name="com.google.android.geo.API_KEY"
+						   android:value="${GOOGLE_MAPS_API_KEY}" />
+		
+		<activity android:name=".MainActivity"
+          android:exported="true"
+          android:launchMode="singleTop">
+		</activity>
+	</application>
+</manifest>
